@@ -27,7 +27,7 @@ A modern, easy-to-use multi-authentication package for Laravel 12 with full Lara
 Install the package via Composer:
 
 ```bash
-composer require chweb/multi-auth --dev
+composer require chweb/multi-auth:^1.0@beta
 ```
 
 ## 🚀 Quick Start
