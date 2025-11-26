@@ -1,13 +1,12 @@
 {
     "name": "chweb/multi-auth",
-    "version": "1.0.1",
     "description": "Laravel 12 Multi-Auth Package for PHP 8.4",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
             "name": "Harshit Chavda",
-            "email": "harshit.chavda@icloud.com"
+            "email": "chwebtech0811@gmail.com"
         }
     ],
     "require": {
@@ -29,5 +28,15 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "homepage": "https://github.com/harshitchavda11/multi-auth",
+    "keywords": [
+        "laravel",
+        "multi-auth",
+        "authentication"
+    ],
+    "support": {
+        "issues": "https://github.com/harshitchavda11/multi-auth/issues",
+        "source": "https://github.com/harshitchavda11/multi-auth"
+    }
 }
