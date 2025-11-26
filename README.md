@@ -137,6 +137,17 @@ Register your routes in `bootstrap/app.php`:
 )
 ```
 
+> **Note:** If you are using Laravel 10 or older, register the route in `app/Providers/RouteServiceProvider.php`.
+
+### ⚡ Frontend Setup
+
+After installing the package, ensure you install dependencies and build assets:
+
+```bash
+npm install
+npm run dev
+```
+
 Run the migration:
 
 ```bash

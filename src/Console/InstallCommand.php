@@ -77,6 +77,28 @@ class InstallCommand extends Command
         ],
     ],
         ");
+
+        $this->showPostInstallInstructions($guard);
+    }
+
+    protected function showPostInstallInstructions(string $guard): void
+    {
+        $this->info("\n----------------------------------------------------------------");
+        $this->info("  🎉  Multi-Auth Scaffolding Installed Successfully!");
+        $this->info("----------------------------------------------------------------\n");
+
+        $this->info("1. Register Routes:");
+        $this->line("   Add the route registration code shown above to bootstrap/app.php\n");
+
+        $this->info("2. Update Config:");
+        $this->line("   Add the guards and providers to config/auth.php as shown above\n");
+
+        $this->info("3. Frontend Assets:");
+        $this->line("   Run the following commands to compile assets:");
+        $this->comment("   npm install && npm run dev\n");
+
+        $this->info("4. Migrate:");
+        $this->comment("   php artisan migrate\n");
     }
 
     protected function installBreezeIfMissing(): void
@@ -215,7 +237,18 @@ class InstallCommand extends Command
         ]);
 
         $this->info("Route file created: routes/{$guard}.php");
-        $this->info("Please register this route file in bootstrap/app.php or RouteServiceProvider.");
+        $this->info("IMPORTANT: Register this route in bootstrap/app.php using the 'then' callback:");
+        $this->comment("
+    ->withRouting(
+        web: __DIR__.'/../routes/web.php',
+        commands: __DIR__.'/../routes/console.php',
+        health: '/up',
+        then: function () {
+            Route::middleware('web')
+                ->group(base_path('routes/{$guard}.php'));
+        },
+    )
+        ");
     }
 
     protected function createViews(string $guard, string $stack): void
