@@ -45,7 +45,7 @@ class InstallCommand extends Command
         $this->createControllers($model, $guard, $stack);
 
         // 4. Routes
-        $this->createRoutes($guard);
+        $this->createRoutes($guard, $stack);
 
         // 5. Views
         $this->createViews($guard, $stack);
@@ -226,10 +226,13 @@ class InstallCommand extends Command
         );
     }
 
-    protected function createRoutes(string $guard): void
+    protected function createRoutes(string $guard, string $stack): void
     {
         $path = base_path("routes/{$guard}.php");
-        $stub = __DIR__ . '/stubs/routes.stub';
+        
+        $stub = ($stack === 'react' || $stack === 'vue')
+            ? __DIR__ . '/stubs/routes-inertia.stub'
+            : __DIR__ . '/stubs/routes.stub';
 
         $this->writeFile($path, $stub, [
             '{{guard}}' => $guard,
